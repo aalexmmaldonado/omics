@@ -39,9 +39,9 @@ theme:
     - content.code.select
     - content.tooltips
     - content.tabs.link
-    - navigation.instant
-    - navigation.instant.prefetch
-    - navigation.instant.progress
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.tracking
@@ -63,13 +63,6 @@ plugins:
   - autorefs
   - material-plausible
   - table-reader
-  - mkdocstrings:
-      handlers:
-        python:
-          paths: ["python-bc"]
-          options:
-            annotations_path: brief
-            docstring_style: google
   - mkdocs-jupyter:
         no_input: False
         include_requirejs: true

@@ -1,0 +1,5 @@
+nav:
+  - index.md
+  - de Bruijn: de-bruijn
+  - Greedy algorithm: greedy
+  - Overlap-layout-consensus: overlap-layout-consensus

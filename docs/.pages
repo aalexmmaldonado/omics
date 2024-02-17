@@ -1,2 +1,6 @@
 nav:
     - Home: index.md
+    - Sequencing: sequencing
+    - Assembly: assembly
+    - Alignment: alignment
+    - Data types: data-types

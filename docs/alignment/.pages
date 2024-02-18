@@ -4,3 +4,4 @@ nav:
   - Scoring: scoring
   - Pairwise: pairwise
   - Multiple: multiple
+  - Splice aware: splice

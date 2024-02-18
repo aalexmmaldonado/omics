@@ -1,0 +1,4 @@
+nav:
+  - Alternatives: index.md
+  - Salmon: salmon
+  - Kallisto: kallisto

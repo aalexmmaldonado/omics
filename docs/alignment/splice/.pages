@@ -1,0 +1,8 @@
+nav:
+  - Splice aware: index.md
+  - STAR: star
+  - RSEM: rsem
+  - HISAT: hisat
+  - Burrows-Wheeler Aligner: bwa
+  - Bowtie: bowtie
+  - Alternatives: alternatives

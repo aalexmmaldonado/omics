@@ -1,4 +1,4 @@
 nav:
-  - Alternatives: index.md
+  - RNA Quantification: index.md
   - Salmon: salmon
   - Kallisto: kallisto

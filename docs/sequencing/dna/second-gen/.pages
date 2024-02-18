@@ -1,4 +1,4 @@
 nav:
-  - index.md
-  - Illumina: illumina
-  - Ion torrent: ion-torrent
+  - 1.1.2 Second gen: index.md
+  - 1.1.2.1 Illumina: illumina
+  - 1.1.2.2 Ion torrent: ion-torrent

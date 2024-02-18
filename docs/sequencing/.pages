@@ -1,4 +1,4 @@
 nav:
-  - index.md
-  - DNA: dna
-  - RNA: rna
+  - 1.0 Sequencing: index.md
+  - 1.1 DNA: dna
+  - 1.2 RNA: rna

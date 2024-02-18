@@ -1,4 +1,4 @@
-# Sanger
+# 1.1.1.1 Sanger
 
 Sanger sequencing, also known as the "chain termination method," is a DNA sequencing technique that was developed by the English biochemist Frederick Sanger and his colleagues in 1977.[^sanger1977dna]
 This method is designed for determining the sequence of nucleotide bases in a piece of DNA (commonly less than 1,000 bp in length) with 99.99% base accuracy.[^shendure2008next]

@@ -1,4 +1,4 @@
-# RNA-seq library
+# 1.2.1 RNA-seq library
 
 The purpose of an RNA-seq library is to enable the comprehensive analysis of an organism's transcriptome through high-throughput sequencing.
 We must collect, process, and prepare RNA molecules for downstream sequencing.

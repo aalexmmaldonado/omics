@@ -1,4 +1,4 @@
-# Third generation
+# 1.1.3 Third generation
 
 The next era of DNA sequencing technology, termed third-generation sequencing (TGS), has gained a place in biology as a way to study genomes, transcriptomes, and metagenomes at an unprecedented resolution.
 These technologies work by single-molecule sequencing and provide:

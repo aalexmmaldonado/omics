@@ -1,4 +1,4 @@
-# DNA sequencing
+# 1.1 DNA sequencing
 
 DNA sequencing is a laboratory technique that determines the order of nucleotides, or bases, in a DNA molecule.
 The sequence of these bases, often abbreviated as A, T, C, and G, encodes the biological information cells use to develop and operate.

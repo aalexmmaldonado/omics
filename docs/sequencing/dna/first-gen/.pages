@@ -1,4 +1,4 @@
 nav:
   - index.md
-  - Sanger: sanger
-  - Maxam-Gilbert: maxam-gilbert
+  - 1.1.1.1 Sanger: sanger
+  - 1.1.1.2 Maxam-Gilbert: maxam-gilbert

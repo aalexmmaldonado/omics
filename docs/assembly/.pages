@@ -1,5 +1,4 @@
 nav:
-    - 2. Genome assembly: index.md
-    - Graphs: graphs
-    - reference
-    - de-novo
+    - 2.0 Genome assembly: index.md
+    - 2.1 De novo: de-novo
+    - 2.2 Reference: reference

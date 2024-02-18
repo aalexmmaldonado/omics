@@ -3,9 +3,9 @@ docs_dir: docs
 site_name: Omics - Breadcrumbs
 site_author: OASCI
 
-repo_name: oasci/breadcrumbs/python-bc
-repo_url: https://gitlab.com/oasci/breadcrumbs/python-bc
-edit_uri: -/edit/main/python-bc
+repo_name: oasci/breadcrumbs/omics
+repo_url: https://gitlab.com/oasci/breadcrumbs/omics
+edit_uri: -/edit/main/omics
 copyright: <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> by OASCI
 
 # https://squidfunk.github.io/mkdocs-material/

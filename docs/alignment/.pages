@@ -1,5 +1,5 @@
 nav:
-  - index.md
+  - 3.0 Alignment: index.md
   - Dot plot: dotplot
   - Scoring: scoring
   - Pairwise: pairwise

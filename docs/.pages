@@ -1,6 +1,6 @@
 nav:
     - Home: index.md
-    - 0 Introduction: intro
+    - 0.0 Introduction: intro
     - 1.0 Sequencing: sequencing
     - 2.0 Genome assembly: assembly
     - 3.0 Alignment: alignment

@@ -1,3 +1,3 @@
-# 1 Sequencing
+# 1.0 Sequencing
 
 TODO:

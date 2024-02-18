@@ -1,4 +1,4 @@
 nav:
-  - RNA Quantification: index.md
-  - Salmon: salmon
-  - Kallisto: kallisto
+  - 5.0 RNA Quantification: index.md
+  - 5.1 Salmon: salmon
+  - 5.2 Kallisto: kallisto

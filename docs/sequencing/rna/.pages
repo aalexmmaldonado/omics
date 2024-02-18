@@ -1,2 +1,3 @@
 nav:
-  - index.md
+  - RNA: index.md
+  - Library preparation: library

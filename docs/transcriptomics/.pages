@@ -2,5 +2,6 @@ nav:
   - 4.0 Transcriptomics: index.md
   - 4.1 Read mapping: mapping
   - 4.2 RNA quantification: rna-quant
-  - 4.3 Single cell: single
-  - 4.4 Spatial: spatial
+  - 4.3 Gene expression: ge
+  - 4.4 Single cell: single
+  - 4.5 Spatial: spatial

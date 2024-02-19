@@ -1,1 +1,1 @@
-# 4.4 Spatial RNA-seq
+# 4.5 Spatial transcriptomics

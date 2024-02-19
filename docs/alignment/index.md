@@ -1,4 +1,4 @@
-# 3.0 Sequence alignment
+# 2.0 Sequence alignment
 
 In bioinformatics, a sequence alignment is a way of arranging two or more sequences of DNA, RNA, or protein to identify regions of similarity that may be a consequence of functional, structural, or evolutionary relationships between them.
 In many cases, the input set of query sequences are assumed to have an evolutionary relationship by which they share a linkage and are descended from a common ancestor.

@@ -1,4 +1,4 @@
-# Global
+# 2.3.1 Global
 
 Global pairwise sequence alignment is a computational technique used in bioinformatics to align two DNA sequences and identify regions of similarity that may indicate functional, structural, or evolutionary relationships between them.
 This method is essential for various applications, including gene identification, phylogenetic analysis, and the study of evolutionary biology.

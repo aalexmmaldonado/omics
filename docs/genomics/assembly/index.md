@@ -1,4 +1,4 @@
-# 2.0 Genome assembly
+# 3.1 Genome assembly
 
 In bioinformatics, genome assembly represents the process of combining many short DNA sequences to recreate the original chromosomes from which the DNA originated.
 Sequence assembly is one of the basic steps after performing next-generation sequencing, PacBio SMRT sequencing, or Nanopore sequencing.

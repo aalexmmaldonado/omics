@@ -1,0 +1,4 @@
+nav:
+  - 4.1 RNA quantification: index.md
+  - 4.1.1 Salmon: salmon
+  - 4.1.2 Kallisto: kallisto

@@ -1,4 +1,4 @@
-# Pairwise sequence alignment
+# 2.3 Pairwise sequence alignment
 
 Pairwise sequence alignment for DNA is a computational method to identify regions of similarity between two DNA sequences.
 This process is essential in bioinformatics for various purposes, such as identifying functional, structural, or evolutionary relationships between sequences.

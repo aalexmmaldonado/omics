@@ -1,0 +1,5 @@
+nav:
+  - 3.1.1 De novo: index.md
+  - 3.1.1.1 Greedy algorithm: greedy
+  - 3.1.1.2 de Bruijn: de-bruijn
+  - 3.1.1.3 Overlap-layout-consensus: overlap-layout-consensus

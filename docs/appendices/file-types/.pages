@@ -1,4 +1,5 @@
 nav:
+    - File types: index.md
     - FASTA: fasta.md
     - FASTQ: fastq.md
     - GFF: gff.md

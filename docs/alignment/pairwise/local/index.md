@@ -1,4 +1,4 @@
-# Local
+# 2.3.2 Local
 
 The local alignment method seeks to find the regions of highest similarity within the sequences without necessarily aligning them from end to end.
 Local alignment is beneficial in identifying functional domains, motifs, or other conserved sequence elements within larger, more variable sequences.

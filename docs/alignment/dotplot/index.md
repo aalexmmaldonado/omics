@@ -1,4 +1,4 @@
-# Dot plot
+# 2.1 Dot plot
 
 A dot plot is a graphical method used in bioinformatics to compare two biological sequences, revealing their similarity and differences at a glance.
 This technique plots one sequence along the x-axis and the other along the y-axis of a two-dimensional matrix.

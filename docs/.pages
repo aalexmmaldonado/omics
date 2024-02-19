@@ -2,8 +2,7 @@ nav:
     - Home: index.md
     - 0.0 Introduction: intro
     - 1.0 Sequencing: sequencing
-    - 2.0 Genome assembly: assembly
-    - 3.0 Alignment: alignment
-    - 4.0 Gene annotation: annotation
-    - 5.0 RNA Quantification: rna-quant
+    - 2.0 Alignment: alignment
+    - 3.0 Genomics: genomics
+    - 4.0 Transcriptomics: transcriptomics
     - Appendices: appendices

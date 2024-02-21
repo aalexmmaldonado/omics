@@ -1,12 +1,21 @@
 # Splice-aware alignment
 
 Splicing is a crucial process in gene expression where introns (non-coding regions) are removed from pre-mRNA transcripts, and exons (coding regions) are joined together.
+
+!!! quote "**Figure 1**"
+
+    <figure markdown>
+    ![](https://www.cshl.edu/wp-content/uploads/2018/08/exons_introns_splicing.jpg){ alight=left width=600 }
+    </figure>
+
+    Credit: [Cold Spring Harbor Laboratory](https://www.cshl.edu/predicting-how-splicing-errors-impact-disease-risk/)
+
 This process allows a single gene to produce multiple proteins through alternative splicing, significantly contributing to transcript diversity and the complexity of proteomes in eukaryotic organisms.
-By selectively including or excluding RNA segments, cells can generate a wide variety of proteins from a limited number of genes, playing a fundamental role in cellular functions and organism development.
+By selectively including or excluding RNA segments, cells can generate various proteins from a limited number of genes, playing a fundamental role in cellular functions and organism development.
 
 The necessity of splice-aware alignment tools for RNA-seq (RNA sequencing) data analysis stems from the challenge of accurately mapping short RNA-seq reads to a reference genome.
 These reads may span exon-exon junctions, where the genetic sequence is discontinuous due to the removal of introns during splicing.
-Traditional alignment tools, which are designed for contiguous genomic sequences, may fail to correctly align these reads across exon-exon junctions, leading to inaccurate gene expression quantification and misunderstanding of the transcriptome's complexity.
+[Traditional alignment tools](../../alignment/), designed for contiguous genomic sequences, may fail to correctly align reads across exon-exon junctions, leading to inaccurate gene expression quantification and misunderstanding of the transcriptome's complexity.
 Splice-aware aligners are designed to handle these complexities by identifying potential splicing events and mapping reads spanning exon-exon junctions.
 This enables precise quantification of gene expression levels, identification of alternative splicing events, and a deeper understanding of the transcriptome's dynamic nature, essential for studies on gene regulation, disease mechanisms, and therapeutic strategies.
 
@@ -15,7 +24,8 @@ This enables precise quantification of gene expression levels, identification of
 ### Splice junctions
 
 The primary challenge in splice-aware alignment is the identification of splice junctions.
-Unlike other genomic regions, exon-exon junctions (the points where two exons are joined together after introns are removed) are not contiguous in the genome. This non-contiguity makes it challenging to align reads that span these junctions because the alignment tools must infer the splicing events that connect the exons.
+Unlike other genomic regions, exon-exon junctions (the points where two exons are joined together after introns are removed) are not contiguous in the genome.
+This non-contiguity makes it challenging to align reads that span these junctions because the alignment tools must infer the splicing events that connect the exons.
 This inference process is computationally intensive due to:
 
 -   There is a vast diversity of potential splicing events, with thousands of possible combinations in which exons can be joined.

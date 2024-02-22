@@ -1,3 +1,4 @@
 nav:
   - Appendices: index.md
   - File types: file-types
+  - Algorithms: algorithms

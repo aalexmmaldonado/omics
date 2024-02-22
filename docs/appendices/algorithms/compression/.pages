@@ -1,0 +1,3 @@
+nav:
+    - Compression: index.md
+    - Burrows-Wheeler transform: bwt

@@ -1,6 +1,6 @@
-# Bowtie
+# 4.1.2 Bowtie
 
-TODO: Has not been updated in three years.
+TODO:
 
 <!-- REFERENCES -->
 

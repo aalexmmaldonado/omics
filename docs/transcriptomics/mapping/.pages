@@ -1,8 +1,8 @@
 nav:
-  - Splice aware: index.md
-  - STAR: star
-  - RSEM: rsem
-  - HISAT: hisat
-  - Burrows-Wheeler Aligner: bwa
-  - Bowtie: bowtie
-  - Alternatives: alternatives
+    - 4.1 Read mapping: index.md
+    - 4.1.1 Burrows-Wheeler Aligner: bwa
+    - 4.1.2 Bowtie: bowtie
+    - STAR: star
+    - RSEM: rsem
+    - HISAT: hisat
+    - SOAP: soap

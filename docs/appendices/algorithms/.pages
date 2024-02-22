@@ -1,3 +1,4 @@
 nav:
     - Algorithms: index.md
     - Compression: compression
+    - Search: search

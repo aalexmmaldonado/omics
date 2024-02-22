@@ -246,8 +246,27 @@ This iterative sorting and pairing process continues until the entire document i
 
 The row that ends with the special "end of file" character (e.g., `$` in our case) indicates the original document: **`banana$`**.
 
-## BWT in Sequence Alignment Tools
+### Code
 
-Many modern sequence alignment tools incorporate the BWT due to its efficiency in handling large genomic datasets.
-Tools like BWA (Burrows-Wheeler Aligner) and Bowtie use the BWT to rapidly align DNA sequences to large genomes
- By leveraging the BWT, these tools can efficiently process millions of DNA sequences, enabling rapid analysis of genetic data.
+```python
+def invert_burrows_wheeler(last_column):
+    # Initialize a list to hold tuples of (character, index) for sorting
+    char_tuples = [(char, i) for i, char in enumerate(last_column)]
+
+    # Sort the tuples by character to simulate the first column
+    first_column_tuples = sorted(char_tuples)
+
+    # Reconstruct the document using a table of indices
+    text_length = len(last_column)
+    # Initialize the index for the row that starts with the EOF character (assuming it's at the end)
+    current_index = last_column.index('$')
+    original_text = [''] * text_length
+
+    for i in range(text_length):
+        char, next_index = first_column_tuples[current_index]
+        original_text[i] = char
+        current_index = next_index
+
+    # Return the reconstructed text as a string
+    return ''.join(original_text)
+```

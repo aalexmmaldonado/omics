@@ -270,3 +270,8 @@ def invert_burrows_wheeler(last_column):
     # Return the reconstructed text as a string
     return ''.join(original_text)
 ```
+
+<!-- REFERENCES -->
+
+[^bwt-fmindex-langmead]: [Slides from Ben Langmead](https://www.cs.jhu.edu/~langmea/resources/lecture_notes/bwt_and_fm_index.pdf)
+[^bwt-report]: [A Block-sorting Lossless Data Compression Algorithm](https://www.hpl.hp.com/techreports/Compaq-DEC/SRC-RR-124.pdf)

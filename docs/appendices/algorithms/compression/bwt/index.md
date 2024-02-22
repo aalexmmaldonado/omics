@@ -104,7 +104,7 @@ The sorting needs to account for multiple occurrences of the same character by e
 
 </div>
 
-#### Reconstruct the First Column
+### Reconstruct the First Column
 
 Sort the characters in the last column alphabetically to obtain the first column of the matrix.
 This is possible because both columns contain the same set of characters, and sorting the last column's characters gives you the original order of characters as they appeared before the rotations were sorted.
@@ -125,7 +125,7 @@ This is possible because both columns contain the same set of characters, and so
 
 </div>
 
-#### Pair Successive Characters
+### Pair Successive Characters
 
 The next step involves pairing each character in the last column with the character in the same row of the first column.
 These pairs represent successive characters in the document, taking cyclically so that the last and first character form a pair. This cyclical pairing is a key aspect of the BWT's ability to preserve character sequences from the original document.
@@ -146,7 +146,7 @@ These pairs represent successive characters in the document, taking cyclically s
 
 </div>
 
-#### Sort and Reconstruct Columns
+### Sort and Reconstruct Columns
 
 By sorting these pairs, you start to reconstruct the document one column at a time.
 Each iteration adds another character to the reconstructed sequence, progressively building up the sorted rotations matrix.
@@ -242,13 +242,9 @@ This iterative sorting and pairing process continues until the entire document i
 
 </div>
 
-#### Identify the Original Text
+### Identify the Original Text
 
 The row that ends with the special "end of file" character (e.g., `$` in our case) indicates the original document: **`banana$`**.
-
-### Conclusion
-
-The inversion process of the BWT showcases its brilliance: it enables full document reconstruction from just the transformed output. This reversibility, combined with the BWT's compression-friendly properties, makes it a powerful tool in data compression and bioinformatics. The methodical pairing, sorting, and reconstructing of the rotations leverage the inherent structure of the BWT output, ensuring that the original document can always be retrieved without loss of information.
 
 ## BWT in Sequence Alignment Tools
 

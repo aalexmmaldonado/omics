@@ -1,5 +1,11 @@
 # 4.1.1 Burrows-Wheeler Aligner
 
+!!! warning "Preliminaries"
+
+    We assume you are familiar with the following material:
+
+    -   [Burrows–Wheeler transform](../../../appendices/algorithms/compression/bwt/)
+
 TODO:
 
 <!-- REFERENCES -->

@@ -49,3 +49,7 @@ Complicating matters further, genomic variability among individuals and sequenci
 Short reads are small sequences of DNA, typically ranging from 50 to 300 base pairs in length, produced by NGS technologies. Despite their critical role in genomic analysis, these short sequences pose significant challenges for accurate genome alignment.
 Due to their limited length, short reads may not contain enough unique information to unambiguously map them back to their original location in the genome.
 This is akin to finding the exact location of a specific sentence in a large book by only having a few words from that sentence.
+
+<!-- REFERENCES -->
+
+[^su2023identification]: Su, T., Hollas, M. A., Fellers, R. T., & Kelleher, N. L. (2023). Identification of splice variants and isoforms in transcriptomics and proteomics. *Annual review of biomedical data science, 6*, 357-376. doi: [10.1146/annurev-biodatasci-020722-044021](https://doi.org/10.1146/annurev-biodatasci-020722-044021)

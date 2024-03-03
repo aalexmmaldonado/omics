@@ -79,7 +79,7 @@ plugins:
 
 hooks:
   - hooks/launchy.py
-colab_base_url: https://colab.research.google.com/github/oasci/python-bc/blob/main/docs
+colab_base_url: https://colab.research.google.com/github/oasci/omics-crumblearn/blob/main/docs
 
 extra:
   generator: false

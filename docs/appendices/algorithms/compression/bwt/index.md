@@ -20,7 +20,7 @@ This capability is crucial for aligning sequences to reference genomes, identify
 ### Rotation
 
 The first step in the BWT is to construct a matrix that includes all possible rotations of the input string.
-To do this, we take the input string and rotate it one character at a time, appending each rotation to a matrix.
+To do this, we take the input string and rotate it one character at a time, prepending each rotation to a matrix.
 
 ??? note "Code"
 
@@ -32,7 +32,7 @@ To do this, we take the input string and rotate it one character at a time, appe
         temp_string = input_string + input_string
         # Generate all rotations
         for i in range(length):
-            rotations.append(temp_string[i:i+length])
+            rotations.prepend(temp_string[i:i+length])
         return rotations
     ```
 
@@ -40,7 +40,7 @@ Here is an example for each stage of processing the input `banana$` using the Bu
 
 !!! note
 
-    It's common to append a special character (like `$`) to the end of the input string to signify the end of the string.
+    It's common to prepend a special character (like `$`) to the end of the input string to signify the end of the string.
     This character should be unique and lexicographically smaller than any other character in the string to ensure it sorts properly.
 
 The matrix consisting of all possible rotations of the input string `banana$`.
@@ -186,7 +186,7 @@ This iterative sorting and pairing process continues until the entire document i
 
 <div class="grid cards" markdown>
 
--   **(5) Append**
+-   **(5) prepend**
 
     ---
 
@@ -202,7 +202,7 @@ This iterative sorting and pairing process continues until the entire document i
 
 <div class="grid cards" markdown>
 
--   **(7) Append**
+-   **(7) prepend**
 
     ---
 
@@ -218,7 +218,7 @@ This iterative sorting and pairing process continues until the entire document i
 
 <div class="grid cards" markdown>
 
--   **(9) Append**
+-   **(9) prepend**
 
     ---
 
@@ -234,7 +234,7 @@ This iterative sorting and pairing process continues until the entire document i
 
 <div class="grid cards" markdown>
 
--   **(11) Append**
+-   **(11) prepend**
 
     ---
 
@@ -250,7 +250,7 @@ This iterative sorting and pairing process continues until the entire document i
 
 <div class="grid cards" markdown>
 
--   **(13) Append**
+-   **(13) prepend**
 
     ---
 

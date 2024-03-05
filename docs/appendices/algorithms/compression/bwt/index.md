@@ -22,70 +22,86 @@ This capability is crucial for aligning sequences to reference genomes, identify
 The first step in the BWT is to construct a matrix that includes all possible rotations of the input string.
 To do this, we take the input string and rotate it one character at a time, appending each rotation to a matrix.
 
-```python
-def create_rotations(input_string):
-    rotations = []
-    length = len(input_string)
-    # Concatenate the string with itself to simplify rotation
-    temp_string = input_string + input_string
-    # Generate all rotations
-    for i in range(length):
-        rotations.append(temp_string[i:i+length])
-    return rotations
-```
+??? note "Code"
 
-Here is an example for each stage of processing the input `"banana$"` using the Burrows-Wheeler Transform (BWT).
+    ```python
+    def create_rotations(input_string):
+        rotations = []
+        length = len(input_string)
+        # Concatenate the string with itself to simplify rotation
+        temp_string = input_string + input_string
+        # Generate all rotations
+        for i in range(length):
+            rotations.append(temp_string[i:i+length])
+        return rotations
+    ```
+
+Here is an example for each stage of processing the input `banana$` using the Burrows-Wheeler Transform (BWT).
 
 !!! note
 
-    It's common to append a special character (like `$`) to the end of the input string to signify the end of the string. This character should be unique and lexicographically smaller than any other character in the string to ensure it sorts properly.
+    It's common to append a special character (like `$`) to the end of the input string to signify the end of the string.
+    This character should be unique and lexicographically smaller than any other character in the string to ensure it sorts properly.
 
-The matrix consisting of all possible rotations of the input string `"banana$"`:
+The matrix consisting of all possible rotations of the input string `banana$`.
+We have **bolded** all of the suffixes in the BWT.
 
-`banana$`<br>
-`anana$b`<br>
-`nana$ba`<br>
-`ana$ban`<br>
-`na$bana`<br>
-`a$banan`<br>
-`$banana`<br>
+**banana**\$<br>
+**anana**\$b<br>
+**nana**\$ba<br>
+**ana**\$ban<br>
+**na**\$bana<br>
+**a**\$banan<br>
+\$banana<br>
+
+Each cyclical permutation shifts the characters of the string, effectively moving the last character to the front and sliding the rest one position to the right.
+This process preserves the "neighborhood" of characters, meaning that characters adjacent before the permutation remain close to each other in the permutations.
 
 ### Sorting
 
 After creating the matrix of all possible rotations, the next step is to sort these rotations lexicographically (i.e., in dictionary order).
 This step reorganizes the matrix into a more structured form that is essential for the next step of the transform.
 
-```python
-def sort_rotations(rotations):
-    return sorted(rotations)
-```
+??? note "Code"
+
+    ```python
+    def sort_rotations(rotations):
+        return sorted(rotations)
+    ```
 
 The sorted rotations of the input string, lexicographically:
 
-`$banana`<br>
-`a$banan`<br>
-`ana$ban`<br>
-`anana$b`<br>
-`banana$`<br>
-`na$bana`<br>
-`nana$ba`<br>
+\$banana<br>
+**a**\$banan<br>
+**ana**\$ban<br>
+**anana**\$b<br>
+**banana**\$<br>
+**na**\$bana<br>
+**nana**\$ba<br>
+
+When these cyclical permutations are sorted lexicographically, patterns emerge.
+Characters frequently occurring in the original text tend to group in the matrix of sorted permutations.
+This grouping is especially pronounced for repeated patterns or sequences in the text, making them more apparent and compressible.
+For example, we see **an** and **na** patterns are present and sorted near each other.
 
 ### Extraction
 
 The final step in the Burrows-Wheeler Transform is to extract the last column of the sorted matrix.
 This column contains the transformed string, which tends to have runs of similar characters, making it more amenable to compression.
 
-```python
-def extract_last_column(sorted_rotations):
-    last_column = ''.join(rotation[-1] for rotation in sorted_rotations)
-    return last_column
-```
+??? note "Code"
+
+    ```python
+    def extract_last_column(sorted_rotations):
+        last_column = ''.join(rotation[-1] for rotation in sorted_rotations)
+        return last_column
+    ```
 
 The last column of this sorted matrix, which is the transformed string: **`annb$aa`**
 
 ## Inversion
 
-Inversion of the Burrows-Wheeler Transform (BWT) is a crucial feature that distinguishes it from other data transformation techniques.
+Inversion of the BWT is a crucial feature that distinguishes it from other data transformation techniques.
 It allows for the original document to be regenerated from its BWT representation, which is essentially the last column of a sorted list of all cyclic rotations of the document.
 This process is reversible due to the unique properties of the BWT and does not require the original document or any additional information beyond the BWT output and the position of the original string in the sorted list.
 
@@ -246,30 +262,74 @@ This iterative sorting and pairing process continues until the entire document i
 
 The row that ends with the special "end of file" character (e.g., `$` in our case) indicates the original document: **`banana$`**.
 
-### Code
+??? note "Code"
 
-```python
-def invert_burrows_wheeler(last_column):
-    # Initialize a list to hold tuples of (character, index) for sorting
-    char_tuples = [(char, i) for i, char in enumerate(last_column)]
+    ```python
+    def invert_burrows_wheeler(last_column):
+        # Initialize a list to hold tuples of (character, index) for sorting
+        char_tuples = [(char, i) for i, char in enumerate(last_column)]
 
-    # Sort the tuples by character to simulate the first column
-    first_column_tuples = sorted(char_tuples)
+        # Sort the tuples by character to simulate the first column
+        first_column_tuples = sorted(char_tuples)
 
-    # Reconstruct the document using a table of indices
-    text_length = len(last_column)
-    # Initialize the index for the row that starts with the EOF character (assuming it's at the end)
-    current_index = last_column.index('$')
-    original_text = [''] * text_length
+        # Reconstruct the document using a table of indices
+        text_length = len(last_column)
+        # Initialize the index for the row that starts with the EOF character (assuming it's at the end)
+        current_index = last_column.index('$')
+        original_text = [''] * text_length
 
-    for i in range(text_length):
-        char, next_index = first_column_tuples[current_index]
-        original_text[i] = char
-        current_index = next_index
+        for i in range(text_length):
+            char, next_index = first_column_tuples[current_index]
+            original_text[i] = char
+            current_index = next_index
 
-    # Return the reconstructed text as a string
-    return ''.join(original_text)
-```
+        # Return the reconstructed text as a string
+        return ''.join(original_text)
+    ```
+
+## Last-to-first mapping
+
+BWT is useful for compression since these runs are easier to compress.
+The "Last to First" (LF) mapping is a crucial part of the BWT, especially when it comes to the inverse transformation, where it helps in reconstructing the original string from the transformed string.
+For example, the BWT of `abracadabra$` is shown below.
+
+&nbsp;I&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$abracadabra<br>
+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**a**\$abracadabr<br>
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**abra**\$abracad<br>
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**abracadabra**\$<br>
+5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**acadabra**\$abr<br>
+6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**adabra**\$abrac<br>
+7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**bra**\$abracada<br>
+8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**bracadabra**\$a<br>
+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**cadabra**\$abra<br>
+10&nbsp;&nbsp;&nbsp;**dabra**\$abraca<br>
+11&nbsp;&nbsp;&nbsp;**ra**\$abracadab<br>
+12&nbsp;&nbsp;&nbsp;**racadabra**\$ab<br>
+
+-   **I column:** Shows the index of the sorted rotations of the original string.
+-   **F column:** The first column in the sorted list of all rotations of the original string. This column is important because it contains the characters of the original string sorted alphabetically.
+-   **L column:** The last column in the sorted list of all rotations of the original string. This is the actual output of the BWT.
+
+The LF mapping is a way to navigate from a character in the last column (L) back to its corresponding character in the first column (F).
+This mapping is possible because the sorting step ensures that the cyclic permutations are in a lexicographically sorted order, which preserves the original order of characters that are identical.
+Thus, if you know the position of a character in the L column, you can find its original position in the F column.
+
+### Steps
+
+Given the sorted rotations and the BWT result, we proceed as follows.
+
+**1. Identify the L (last) and F (first) columns from your sorted rotations.**
+
+Based on our BWT above, we have
+
+-   F column (first characters of each row, already sorted): `$aaaaabbcdrr`
+-   L column (last characters of each row, the BWT of the string): `ard$rcaaaabb`
+
+**2. Count occurrences in L column up to each character to compute the mapping to F.**
+
+To compute the LF mapping, we need to count how many times each character appears in L up to a given point.
+This count tells us the rank of each character in L, which corresponds directly to its original position in F because both columns are essentially different permutations of the same string with the same character frequencies.
 
 <!-- REFERENCES -->
 

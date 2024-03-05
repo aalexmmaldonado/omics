@@ -156,7 +156,105 @@ and drop the ranks.
 
 ## Searching
 
-TODO:
+This LF mapping is also super helpful in quickly searching for patterns.
+For example, let's search our BWT for the string "bra" and copy our BWT below.
+
+F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+&nbsp;\$&nbsp;&nbsp;abracadabr&nbsp;a<sub>0</sub><br>
+a<sub>0</sub>&nbsp;\$abracadab&nbsp;r<sub>0</sub><br>
+a<sub>1</sub>&nbsp;bra\$abraca&nbsp;d<sub>0</sub><br>
+a<sub>2</sub>&nbsp;bracadabra&nbsp;&nbsp;\$<br>
+a<sub>3</sub>&nbsp;cadabra\$ab&nbsp;r<sub>1</sub><br>
+a<sub>4</sub>&nbsp;dabra\$abra&nbsp;c<sub>0</sub><br>
+b<sub>0</sub>&nbsp;ra\$abracad&nbsp;a<sub>1</sub><br>
+b<sub>1</sub>&nbsp;racadabra\$&nbsp;a<sub>2</sub><br>
+c<sub>0</sub>&nbsp;adabra\$abr&nbsp;a<sub>3</sub><br>
+d<sub>0</sub>&nbsp;abra\$abrac&nbsp;a<sub>4</sub><br>
+r<sub>0</sub>&nbsp;a\$abracada&nbsp;b<sub>0</sub><br>
+r<sub>1</sub>&nbsp;acadabra\$a&nbsp;b<sub>1</sub><br>
+
+Similar to our reversing the BWT, we perform successive LF mapping but we first reverse our search string (i.e., arb).
+
+!!! note
+
+    We actually did this in the previous section by starting from the first row that begins with \$.
+
+First, we find all rows that start with "a".
+
+F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+&nbsp;\$&nbsp;&nbsp;abracadabr&nbsp;a<sub>0</sub><br>
+**a<sub>0</sub>&nbsp;\$abracadab&nbsp;r<sub>0</sub>**<br>
+**a<sub>1</sub>&nbsp;bra\$abraca&nbsp;d<sub>0</sub>**<br>
+**a<sub>2</sub>&nbsp;bracadabra&nbsp;&nbsp;\$**<br>
+**a<sub>3</sub>&nbsp;cadabra\$ab&nbsp;r<sub>1</sub>**<br>
+**a<sub>4</sub>&nbsp;dabra\$abra&nbsp;c<sub>0</sub>**<br>
+b<sub>0</sub>&nbsp;ra\$abracad&nbsp;a<sub>1</sub><br>
+b<sub>1</sub>&nbsp;racadabra\$&nbsp;a<sub>2</sub><br>
+c<sub>0</sub>&nbsp;adabra\$abr&nbsp;a<sub>3</sub><br>
+d<sub>0</sub>&nbsp;abra\$abrac&nbsp;a<sub>4</sub><br>
+r<sub>0</sub>&nbsp;a\$abracada&nbsp;b<sub>0</sub><br>
+r<sub>1</sub>&nbsp;acadabra\$a&nbsp;b<sub>1</sub><br>
+
+Now we eliminate all rows that do not end in "r" because remember the letter in F is the letter immediately preceding the L letter in the same row.
+Thus, any row with "a" in F and "r" in L represents "ra" in the original string.
+
+F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+&nbsp;\$&nbsp;&nbsp;abracadabr&nbsp;a<sub>0</sub><br>
+**a<sub>0</sub>&nbsp;\$abracadab&nbsp;r<sub>0</sub>**<br>
+a<sub>1</sub>&nbsp;bra\$abraca&nbsp;d<sub>0</sub><br>
+a<sub>2</sub>&nbsp;bracadabra&nbsp;&nbsp;\$<br>
+**a<sub>3</sub>&nbsp;cadabra\$ab&nbsp;r<sub>1</sub>**<br>
+a<sub>4</sub>&nbsp;dabra\$abra&nbsp;c<sub>0</sub><br>
+b<sub>0</sub>&nbsp;ra\$abracad&nbsp;a<sub>1</sub><br>
+b<sub>1</sub>&nbsp;racadabra\$&nbsp;a<sub>2</sub><br>
+c<sub>0</sub>&nbsp;adabra\$abr&nbsp;a<sub>3</sub><br>
+d<sub>0</sub>&nbsp;abra\$abrac&nbsp;a<sub>4</sub><br>
+r<sub>0</sub>&nbsp;a\$abracada&nbsp;b<sub>0</sub><br>
+r<sub>1</sub>&nbsp;acadabra\$a&nbsp;b<sub>1</sub><br>
+
+Now we find the rows with r<sub>0</sub> and r<sub>1</sub> in the F column.
+
+F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+&nbsp;\$&nbsp;&nbsp;abracadabr&nbsp;a<sub>0</sub><br>
+a<sub>0</sub>&nbsp;\$abracadab&nbsp;r<sub>0</sub><br>
+a<sub>1</sub>&nbsp;bra\$abraca&nbsp;d<sub>0</sub><br>
+a<sub>2</sub>&nbsp;bracadabra&nbsp;&nbsp;\$<br>
+a<sub>3</sub>&nbsp;cadabra\$ab&nbsp;r<sub>1</sub><br>
+a<sub>4</sub>&nbsp;dabra\$abra&nbsp;c<sub>0</sub><br>
+b<sub>0</sub>&nbsp;ra\$abracad&nbsp;a<sub>1</sub><br>
+b<sub>1</sub>&nbsp;racadabra\$&nbsp;a<sub>2</sub><br>
+c<sub>0</sub>&nbsp;adabra\$abr&nbsp;a<sub>3</sub><br>
+d<sub>0</sub>&nbsp;abra\$abrac&nbsp;a<sub>4</sub><br>
+**r<sub>0</sub>&nbsp;a\$abracada&nbsp;b<sub>0</sub><br>**
+**r<sub>1</sub>&nbsp;acadabra\$a&nbsp;b<sub>1</sub><br>**
+
+We normally will need to eliminate all rows that do not have "b" in the L column, but we don't need to in this example.
+We go to the L column of our valid rows and see that our matches start with b<sub>0</sub> and b<sub>1</sub> in the F column.
+
+F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L<br>
+&nbsp;\$&nbsp;&nbsp;abracadabr&nbsp;a<sub>0</sub><br>
+a<sub>0</sub>&nbsp;\$abracadab&nbsp;r<sub>0</sub><br>
+a<sub>1</sub>&nbsp;bra\$abraca&nbsp;d<sub>0</sub><br>
+a<sub>2</sub>&nbsp;bracadabra&nbsp;&nbsp;\$<br>
+a<sub>3</sub>&nbsp;cadabra\$ab&nbsp;r<sub>1</sub><br>
+a<sub>4</sub>&nbsp;dabra\$abra&nbsp;c<sub>0</sub><br>
+**b<sub>0</sub>&nbsp;ra\$abracad&nbsp;a<sub>1</sub><br>**
+**b<sub>1</sub>&nbsp;racadabra\$&nbsp;a<sub>2</sub><br>**
+c<sub>0</sub>&nbsp;adabra\$abr&nbsp;a<sub>3</sub><br>
+d<sub>0</sub>&nbsp;abra\$abrac&nbsp;a<sub>4</sub><br>
+r<sub>0</sub>&nbsp;a\$abracada&nbsp;b<sub>0</sub><br>
+r<sub>1</sub>&nbsp;acadabra\$a&nbsp;b<sub>1</sub><br>
+
+We have found the two rows that match our string.
+This may seem redundant since we can easily see the correct rows from the beginning, but this quickly becomes intractable when we have thousands and thousands of rows.
+
+## Rank array
+
+TODO: Introduce rank arrays for L and F and explain navigating them.
+
+## Checkpoints
+
+TODO: Introduce rank checkpoints and offsets
 
 <!-- REFERENCES -->
 

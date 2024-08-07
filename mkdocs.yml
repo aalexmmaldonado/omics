@@ -63,19 +63,27 @@ plugins:
   - autorefs
   - material-plausible
   - table-reader
-  - mkdocs-jupyter:
-        no_input: False
-        include_requirejs: true
-        include_source: True
-        remove_tag_config:
-            remove_input_tags:
-                - hide_code
   - awesome-pages:
         collapse_single_pages: true
         strict: false
         order: asc
         sort_type: natural
         order_by: title
+  - git-revision-date-localized:
+      type: iso_datetime
+      timezone: America/Detroit
+      fallback_to_build_date: true
+  - macros
+  - glightbox
+  - mkdocs-jupyter:
+        no_input: False
+        include_requirejs: true
+        include_source: True
+        ignore: ["*.py"]
+        remove_tag_config:
+            remove_input_tags:
+                - hide_code
+
 
 hooks:
   - hooks/launchy.py
@@ -104,7 +112,6 @@ extra_css:
 
 extra_javascript:
   - js/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 markdown_extensions:

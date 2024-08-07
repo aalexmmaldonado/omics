@@ -1,4 +1,4 @@
-# 4.1.2 Bowtie
+# Bowtie
 
 TODO:
 

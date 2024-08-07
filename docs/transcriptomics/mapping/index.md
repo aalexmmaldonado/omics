@@ -1,4 +1,4 @@
-# 4.1 Read mapping
+# Read mapping
 
 Splicing is a crucial process in gene expression where introns (non-coding regions) are removed from pre-mRNA transcripts, and exons (coding regions) are joined together.
 

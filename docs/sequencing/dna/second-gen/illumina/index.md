@@ -1,4 +1,4 @@
-# 1.1.2.1 Illumina
+# Illumina
 
 Illumina, arguably the most popular sequencing method, is based on the concept of "sequencing by synthesis".
 Sequencing by synthesis technology uses a polymerase or ligase enzyme to incorporate nucleotides with a fluorescent tag, which are then identified to determine the DNA sequence.

@@ -1,4 +1,4 @@
-# 4.1.1 Burrows-Wheeler Aligner
+# Burrows-Wheeler Aligner
 
 !!! warning "Preliminaries"
 

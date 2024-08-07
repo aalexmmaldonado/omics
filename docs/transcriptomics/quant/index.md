@@ -1,4 +1,4 @@
-# 4.2 Quantification
+# Quantification
 
 Performing RNA quantification is an essential step beyond [read mapping][read-mapping] in RNA sequencing (RNA-seq) studies.
 Quantifying RNA transcripts serves several crucial purposes that significantly enhance the value and applicability of the sequencing data.

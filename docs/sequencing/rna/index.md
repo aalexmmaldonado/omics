@@ -1,3 +1,3 @@
-# 1.2 RNA sequencing
+# RNA sequencing
 
 TODO:

@@ -1,4 +1,4 @@
-# 3.2 Gene annotation
+# Gene annotation
 
 !!! danger "DRAFT"
 

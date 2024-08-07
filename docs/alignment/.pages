@@ -1,6 +1,6 @@
 nav:
-  - 2.0 Alignment: index.md
-  - 2.1 Dot plot: dotplot
-  - 2.2 Scoring: scoring
-  - 2.3 Pairwise: pairwise
-  - 2.4 Multiple: multiple
+  - Alignment: index.md
+  - Dot plot: dotplot
+  - Scoring: scoring
+  - Pairwise: pairwise
+  - Multiple: multiple

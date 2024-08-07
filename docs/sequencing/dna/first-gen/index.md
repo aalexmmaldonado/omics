@@ -1,4 +1,4 @@
-# 1.1.1 First generation
+# First generation
 
 First-generation sequencing technologies were developed and released in the late 1970s.
 

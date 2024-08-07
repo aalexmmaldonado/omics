@@ -1,4 +1,4 @@
-# 1.1.1.2 Maxam-Gilbert
+# Maxam-Gilbert
 
 TODO:
 

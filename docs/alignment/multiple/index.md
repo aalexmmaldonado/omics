@@ -1,4 +1,4 @@
-# 2.4 Multiple sequence alignment
+# Multiple sequence alignment
 
 !!! danger "DRAFT"
 

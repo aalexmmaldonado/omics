@@ -1,4 +1,4 @@
-# 2.2 Scoring
+# Scoring
 
 In DNA sequence alignment, scoring is crucial for quantifying the similarity or difference between two DNA sequences.
 This method helps identify the best possible alignment between sequences, revealing evolutionary relationships, gene function, and genetic variations.

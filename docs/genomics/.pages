@@ -1,4 +1,4 @@
 nav:
-  - 3.0 Genomics: index.md
-  - 3.1 Genome assembly: assembly
-  - 3.2 Gene annotation: annotation
+  - Genomics: index.md
+  - Genome assembly: assembly
+  - Gene annotation: annotation

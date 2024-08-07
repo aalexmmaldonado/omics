@@ -1,4 +1,4 @@
-# 1.1.2.2 Ion torrent
+# Ion torrent
 
 TODO:
 

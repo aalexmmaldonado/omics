@@ -1,4 +1,4 @@
-# 4.2.3 Salmon
+# Salmon
 
 !!! warning "Preliminaries"
 

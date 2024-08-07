@@ -1,4 +1,4 @@
-# 4.2.2 Kallisto
+# Kallisto
 
 <!-- REFERENCES -->
 

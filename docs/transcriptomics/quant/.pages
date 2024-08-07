@@ -1,5 +1,5 @@
 nav:
-  - 4.2 Quantification: index.md
-  - 4.2.1 Problem formulation: problem
-  - 4.2.2 Kallisto: kallisto
-  - 4.2.3 Salmon: salmon
+  - Quantification: index.md
+  - Problem formulation: problem
+  - Kallisto: kallisto
+  - Salmon: salmon

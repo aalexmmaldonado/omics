@@ -1,7 +1,7 @@
 nav:
-    - 4.1 Read mapping: index.md
-    - 4.1.1 Burrows-Wheeler Aligner: bwa
-    - 4.1.2 Bowtie: bowtie
+    - Read mapping: index.md
+    - Burrows-Wheeler Aligner: bwa
+    - Bowtie: bowtie
     - STAR: star
     - RSEM: rsem
     - HISAT: hisat

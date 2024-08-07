@@ -1,5 +1,5 @@
 nav:
-  - 1.1 DNA: index.md
-  - 1.1.1 First gen: first-gen
-  - 1.1.2 Second gen: second-gen
-  - 1.1.3 Third gen: third-gen
+  - DNA: index.md
+  - First gen: first-gen
+  - Second gen: second-gen
+  - Third gen: third-gen

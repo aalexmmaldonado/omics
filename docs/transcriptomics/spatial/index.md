@@ -1,1 +1,1 @@
-# 4.5 Spatial transcriptomics
+# Spatial transcriptomics

@@ -1,4 +1,4 @@
-# 4.2.1 Problem formulation
+# Problem formulation
 
 Formulating the problem of RNA quantification in the context of gene expression analysis involves determining the abundance of transcripts in a biological sample.
 This process is pivotal for understanding gene regulation, cellular responses, and the molecular underpinnings of disease.

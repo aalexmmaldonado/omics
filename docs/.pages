@@ -1,6 +1,5 @@
 nav:
     - Home: index.md
-    - Introduction: intro
     - Sequencing: sequencing
     - Alignment: alignment
     - Genomics: genomics

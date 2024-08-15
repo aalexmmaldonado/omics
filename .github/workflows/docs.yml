@@ -50,7 +50,7 @@ jobs:
         run: make from-conda-lock
 
       - name: Install docs dependenices
-        run: make docs-env
+        run: make install
 
       - name: Build documentation
         run: make docs

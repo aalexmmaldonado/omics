@@ -3,44 +3,16 @@
 ## Dideoxynucleotides
 
 The use of dideoxynucleotides (ddNTPs) as chain terminators was a critical insight in the development of the method.
-These modified nucleotides lack the 3'-OH group necessary for DNA chain elongation.
-Sanger proposed that by incorporating ddNTPs into the reaction mixture along with normal deoxynucleotides (dNTPs), DNA synthesis would occasionally terminate when a ddNTP was incorporated instead of a dNTP.
-This controlled termination would produce a set of DNA fragments of various lengths, each ending at a specific nucleotide.
+This lack of hydroxyl group prevents ddNTPs from making a phosphodiester bond with the next nucleotide, thus terminating the nucleotide chain.
 
-To implement this concept, Sanger designed an experimental approach involving four separate reactions, each containing all four normal dNTPs but with a small amount of one type of ddNTP.
-In each reaction, DNA fragments would be created that terminated at every occurrence of that specific nucleotide.
-This approach allowed for the generation of a comprehensive set of fragments representing terminations at each nucleotide position in the template DNA.
+!!! quote "**Figure**"
 
-The separation and analysis of these DNA fragments presented another challenge in the development of the sequencing method. Sanger recognized that if these fragments could be separated based on their size, the pattern across all four reactions would reveal the original DNA sequence. This realization led to the incorporation of gel electrophoresis as a crucial component of the sequencing process. Gel electrophoresis allowed for the precise separation of DNA fragments based on their length, providing a visual representation of the sequence when the results from all four reactions were analyzed together.
+    <figure markdown>
+    ![](https://www.onlinebiologynotes.com/wp-content/uploads/2017/07/ddNTPs-1.jpg){ alight=left width=800 }
+    </figure>
 
-Detection of the separated DNA fragments was initially achieved through radioactive labeling. Sanger's method involved incorporating radioactive nucleotides into the DNA fragments during synthesis, allowing for their visualization after gel electrophoresis. This approach provided the sensitivity needed to detect the relatively small amounts of DNA produced in the sequencing reactions. Later developments in the technique would replace radioactive labeling with fluorescent tags, enabling automation and increased throughput.
-
-The theoretical framework of Sanger sequencing demonstrates how fundamental principles of molecular biology can be leveraged to solve complex problems. By carefully considering the mechanics of DNA replication and devising ways to control and observe this process, Sanger and his colleagues created a method that could directly determine the sequence of nucleotides in a DNA molecule. This approach represented a significant leap forward in molecular biology, providing researchers with a powerful tool for reading the genetic code.
-
-## Thought Experiments and Logical Steps
-
-1. **Controlling Replication**: Sanger likely pondered, "What if we could control DNA replication and stop it at specific points? We could then 'read' the DNA sequence by analyzing the lengths of the resulting fragments."
-
-2. **Terminating Replication**: The next logical question was, "How can we stop DNA replication at specific nucleotides?" This led to the idea of using modified nucleotides that would terminate the replication process.
-
-3. **Separating by Size**: Sanger realized, "If we could separate DNA fragments by size, we could determine the sequence by analyzing the pattern of these fragments."
-
-4. **Labeling for Detection**: To "see" these DNA fragments, Sanger considered, "What if we could label the DNA in a way that allows us to detect it after separation?"
-
-## The Breakthrough: Chain Termination
-
-The culmination of these ideas led to the chain termination method:
-
-1. Use normal nucleotides (dNTPs) along with a small amount of modified nucleotides (ddNTPs) that lack the ability to form a bond with the next nucleotide.
-
-2. As DNA polymerase replicates the template, it occasionally incorporates a ddNTP, which terminates the chain at that specific nucleotide.
-
-3. By running four separate reactions, each with a different ddNTP (ddATP, ddTTP, ddGTP, ddCTP), you create a set of fragments that terminate at each occurrence of that specific nucleotide.
-
-4. Separate these fragments by size using gel electrophoresis.
-
-5. By reading the pattern of fragment sizes across the four reactions, you can deduce the original DNA sequence.
-
+Respective ddNTPs of dNTPs terminate the chain at their respective site.
+For example, ddATP terminates at the A site, ddCTP at the C site, ddGTP at the G site, and ddTTP at the T site.
 
 ## PCR
 
@@ -57,31 +29,10 @@ Using different dideoxynucleotides in separate reactions allows the researcher t
 !!! quote "**Figure 4**"
 
     <figure markdown>
-    ![](/img/seq/sanger-sequencing_steps_process_diagram.png){ alight=left width=600 }
+    ![](https://www.sigmaaldrich.com/deepweb/assets/sigmaaldrich/marketing/global/images/technical-documents/protocols/genomics/sequencing/sanger-sequencing_steps_process_diagram/sanger-sequencing_steps_process_diagram.png){ width=700 }
     </figure>
 
     Credit: [Millipore Sigma](https://www.sigmaaldrich.com/US/en/technical-documents/protocol/genomics/sequencing/sanger-sequencing)
-
-## Terminating replication
-
-The reaction mixture also contains **di**deoxynucleoside triphosphate (ddNTPs) and usual dNTPs.
-Suppose ddNTPs are incorporated during replication instead of usual dNTPs in the growing DNA strand.
-In that case, the replication stops at that nucleotide.
-The ddNTPs are analogs of dNTPs but lack a hydroxyl group (-OH) at c3 of the ribose sugar.
-
-!!! quote "**Figure 3**"
-
-    <figure markdown>
-    ![](https://www.onlinebiologynotes.com/wp-content/uploads/2017/07/ddNTPs-1.jpg){ alight=left width=800 }
-    </figure>
-
-This lack of hydroxyl group prevents ddNTPs from making a phosphodiester bond with the next nucleotide, thus terminating the nucleotide chain.
-Respective ddNTPs of dNTPs terminate the chain at their respective site.
-For example, ddATP terminates at the A site, ddCTP at the C site, ddGTP at the G site, and ddTTP at the T site.
-
-The DNA sample is divided into four separate sequencing reactions containing all four standard deoxynucleotides (dATP, dGTP, dCTP, and dTTP) and the DNA polymerase.
-Only one of the four dideoxynucleotides (ddATP, ddGTP, ddCTP, or ddTTP) is added to each reaction.
-In contrast, the other added nucleotides are ordinary ones.
 
 ## Fluorescence
 

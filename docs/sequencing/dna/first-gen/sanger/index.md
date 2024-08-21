@@ -4,7 +4,7 @@ Sanger sequencing, also known as the "chain termination method," is a DNA sequen
 This method is designed for determining the sequence of nucleotide bases in a piece of DNA (commonly less than 1,000 bp in length) with 99.99% base accuracy [^shendure2008next].
 These fragments are then used to assemble larger DNA fragments and, eventually, entire chromosomes.
 
-Fist, feel free to watch this video to get an overview of how Sanger sequencing works.
+First, feel free to watch this video to get an overview of how Sanger sequencing works.
 
 <iframe width="100%" height="473" src="https://www.youtube.com/embed/dVRB4CaLizc?si=pQdxZk8AKEtR9Jk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -20,8 +20,22 @@ To understand this concept, it's crucial to consider the natural process of DNA 
 In natural DNA replication, DNA polymerase enzymes read a template strand of DNA and synthesize a complementary strand by adding nucleotides one at a time.
 This process continues uninterrupted until the entire template is copied.
 
-<div id="dna-elongation-container"></div>
-<script src="./dna-elongation.js"></script>
+!!! quote "DNA Elongation Simulation"
+    This model simplifies the complex process of DNA replication, omitting enzymes like DNA polymerase and other cellular factors. It aims to visualize the basic concept of complementary base pairing and the directionality of DNA synthesis.
+
+    <div id="dna-elongation-container" style="width: 100%; max-width: 800px; margin: 0 auto;"></div>
+    <script src="./dna-elongation.js"></script>
+
+    This interactive animation demonstrates a simplified model of DNA replication, specifically the elongation phase:
+
+    -   **Template Strand**: The top strand represents the 3' to 5' template DNA strand, serving as the blueprint for replication.
+    -   **Growing Strand**: The bottom strand shows the newly synthesizing DNA, growing in the 5' to 3' direction.
+    -   **Floating Nucleotides**: Colorful shapes (circles and squares) represent free nucleotides (A, T, C, G) moving randomly in solution, simulating Brownian motion.
+    -   **Base Pairing**: When a complementary nucleotide approaches the growing strand's end, it attaches, extending the new DNA strand.
+        This process follows the base-pairing rule (A with T, C with G).
+    -   **Speed Control**: Use the slider in the top left corner to adjust the simulation speed.
+        Higher values accelerate the movement and replication process.
+    -   **Restart Button**: Click 'Restart' to begin a new replication cycle with a fresh template strand.
 
 Sanger's insight was to find a way to stop this process at specific points, creating a collection of partial copies of the DNA that, when analyzed together, would reveal the sequence of the original template.
 
@@ -45,8 +59,9 @@ The use of dideoxynucleotides (ddNTPs) as chain terminators was a critical insig
 
 To implement this concept, Sanger designed an experimental approach involving four separate reactions, each containing all four normal dNTPs but with a small amount of one type of ddNTP. In each reaction, DNA fragments would be created that terminated at every occurrence of that specific nucleotide. This approach allowed for the generation of a comprehensive set of fragments representing terminations at each nucleotide position in the template DNA.
 
-<div id="chain-termination-container"></div>
-<script src="./chain-termination.js"></script>
+!!! quote "DNA Elongation Simulation"
+    <div id="chain-termination-container"></div>
+    <script src="./chain-termination.js"></script>
 
 The separation and analysis of these DNA fragments presented another challenge in the development of the sequencing method. Sanger recognized that if these fragments could be separated based on their size, the pattern across all four reactions would reveal the original DNA sequence. This realization led to the incorporation of gel electrophoresis as a crucial component of the sequencing process. Gel electrophoresis allowed for the precise separation of DNA fragments based on their length, providing a visual representation of the sequence when the results from all four reactions were analyzed together.
 

@@ -3,10 +3,11 @@ let dnaElongationSketch = (p) => {
   let nucleotides = [];
   let templateSequence = [];
   let primerSequence = [];
-  const nucleotideNumber = 70;
-  const nucleotideSize = 20;
-  const sequenceStartX = 10;
-  const sequenceY = 300;
+  let nucleotideNumber = 70;
+  let nucleotideSize = 20;
+  let baseTextSize = 11;
+  let sequenceStartX = 10;
+  let sequenceY;
   const nucleotideTypes = ['A', 'T', 'C', 'G'];
   const nucleotideColors = {
     'A': [239, 71, 111],
@@ -16,16 +17,41 @@ let dnaElongationSketch = (p) => {
   };
 
   let speedSlider, restartButton;
+  let aspectRatio = 4/3;
 
   p.setup = () => {
-    canvas = p.createCanvas(800, 600);
+    // Placeholder size, will be updated in windowResized
+    canvas = p.createCanvas(100, 100);
     canvas.parent("dna-elongation-container");
 
     speedSlider = p.createSlider(0.5, 3, 1, 0.1);
     restartButton = p.createButton('Restart');
     restartButton.mousePressed(startAnimation);
-    moveInterface();
 
+    p.windowResized();
+    startAnimation();
+  };
+
+  p.windowResized = () => {
+    let containerWidth = p.select('#dna-elongation-container').width;
+    let canvasHeight = containerWidth / aspectRatio;
+    p.resizeCanvas(containerWidth, canvasHeight);
+
+    // Update variables that depend on canvas size
+    nucleotideSize = p.width / 40;
+    sequenceY = p.height / 2;
+    nucleotideNumber = Math.floor(p.width / (nucleotideSize + 5) * 2);
+
+    // Calculate new text size
+    currentTextSize = (baseTextSize * p.width) / 600;
+
+    // Reposition interface elements
+    speedSlider.position(canvas.position().x + 5, canvas.position().y + 10);
+    speedSlider.style('width', p.width / 4 + 'px');
+    restartButton.position(canvas.position().x + 8, canvas.position().y + 45);
+    restartButton.style('font-size', currentTextSize + 'px');
+
+    // Restart the animation to adjust for new size
     startAnimation();
   };
 
@@ -40,7 +66,7 @@ let dnaElongationSketch = (p) => {
       templateSequence.push(base);
     }
 
-    // Initialize complementary strand with first 10 nucleotides
+    // Initialize complementary strand with first 3 nucleotides
     for (let i = 0; i < 3; i++) {
       primerSequence.push(getComplementaryBase(templateSequence[i]));
     }
@@ -51,19 +77,14 @@ let dnaElongationSketch = (p) => {
     }
   }
 
-  function moveInterface() {
-    speedSlider.position(canvas.position().x + 5, canvas.position().y + 10);
-    restartButton.position(canvas.position().x + 8, canvas.position().y + 45);
-  }
-
-  p.windowResized = () => {
-    moveInterface();
-  };
-
   p.draw = () => {
     p.background(245);
 
-    p.text("Speed factor: " + String(speedSlider.value()), 220, 23);
+    p.textSize(currentTextSize);
+    p.textAlign(p.LEFT, p.CENTER);
+    let speedTextX = p.width / 4 + 20;
+    let speedTextY = 23;
+    p.text("Speed factor: " + speedSlider.value().toFixed(1), speedTextX, speedTextY);
 
     // Draw DNA sequence
     drawtemplateSequence();
@@ -106,7 +127,7 @@ let dnaElongationSketch = (p) => {
 
     p.fill(0);
     p.textAlign(p.CENTER, p.CENTER);
-    p.textSize(12);
+    p.textSize(currentTextSize * 0.9);
     p.text(type, x, y);
   }
 
@@ -268,4 +289,4 @@ let dnaElongationSketch = (p) => {
   }
 };
 
-let myp5 = new p5(dnaElongationSketch);
+let dnaElongation = new p5(dnaElongationSketch);

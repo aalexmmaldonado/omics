@@ -1,6 +1,7 @@
 nav:
   - DNA: index.md
   - Sample preparation: sample-prep.md
+  - pcr
   - First gen: first-gen
   - Second gen: second-gen
   - Third gen: third-gen

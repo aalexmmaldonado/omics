@@ -26,6 +26,19 @@ Primers are 20-25 nucleotides in length.
 Annealing allows for the primers to bind to the single-stranded DNA at their respective complementary sites beginning at the 3’ end of the DNA template.
 Subsequently, the binding of the primers to their complementary sites on single-stranded DNA generates two double-stranded molecules.
 
+### Standard primers
+
+The M13-tailed primers are used to simplify the workflow when sequencing PCR products and they reduce the loss of the 5' unresolvable bases.
+When the PCR primers contain M13 tails on their 5' ends, the M13 sequence is incorporated into the amplicons.
+This enables sequencing master mixes containing the universal M13 forward, or M13 reverse primers.
+The sequence for the M13 forward and reverse primers is as follows:
+
+-   M13 forward primer sequence: `5′ TGTAAAACGACGGCCAGT 3′`
+-   M13 reverse primer sequence: `5′ CAGGAAACAGCTATGACC 3′`
+
+The primer is designed for the known sequences at the 3' end of the template strand.
+M13 sequences are generally attached to the 3' end, and the primer of this M13 is made.
+
 ## Elongation
 
 Finally, an optimal reaction temperature, 75-80 C, that is best suitable for enzyme-induced DNA replication is selected to ensure DNA polymerase activity.

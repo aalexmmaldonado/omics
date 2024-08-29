@@ -92,11 +92,12 @@ locks: conda-create conda-setup conda-dependencies conda-lock pre-commit-install
 
 .PHONY: validate
 validate:
-	$(CONDA) markdownlint-cli2-fix biosc1540/*
-	$(CONDA) pre-commit run --all-files
+	- $(CONDA) markdownlint-cli2 "**/*.{md,markdown}" --config .markdownlint.yaml
+	- $(CONDA) pre-commit run --all-files
 
 .PHONY: formatting
 formatting:
+	- $(CONDA) markdownlint-cli2 "**/*.{md,markdown}" --fix --config .markdownlint.yaml
 	- $(CONDA) isort --settings-path pyproject.toml ./
 	- $(CONDA) black --config pyproject.toml ./
 

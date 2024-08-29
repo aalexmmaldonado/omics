@@ -14,17 +14,21 @@ let sangerSketch = (p) => {
       'C': [255, 209, 102],
       'G': [6, 214, 160]
     };
+    const elongateFactor = 2.5;  // How far away until we attach nucleotide
 
     let canvas, speedSlider, fractionSlider, restartButton;
     let aspectRatio = 4/3;
     let currentTextSize;
     let lastFractionValue;
 
+    // Fixed template sequence
+    const fixedTemplateSequence = "ATCGTATGCTATCGATCGATCGTAGCTAGCTAG";
+
     p.setup = () => {
       canvas = p.createCanvas(100, 100);
       canvas.parent("chain-termination-container");
 
-      speedSlider = p.createSlider(0.5, 3, 1, 0.1);
+      speedSlider = p.createSlider(0.5, 5, 2, 0.1);
       fractionSlider = p.createSlider(0.1, 1.0, 0.3, 0.1);
       restartButton = p.createButton('Restart');
       restartButton.mousePressed(startAnimation);
@@ -83,13 +87,8 @@ let sangerSketch = (p) => {
 
     function startAnimation() {
       nucleotides = [];
-      templateSequence = [];
+      templateSequence = fixedTemplateSequence.split('');
       primerSequence = [];
-
-      for (let i = 0; i < p.width / (nucleotideSize + 5); i++) {
-        let base = p.random(nucleotideTypes);
-        templateSequence.push(base);
-      }
 
       for (let i = 0; i < 3; i++) {
         primerSequence.push(getComplementaryBase(templateSequence[i]));
@@ -114,29 +113,30 @@ let sangerSketch = (p) => {
       }
     }
 
-    function drawNucleotide(x, y, type, alpha, isChainTerminator = false) {
-      let color = nucleotideColors[type];
-      p.fill(color[0], color[1], color[2], alpha);
-      if (isChainTerminator) {
-        p.stroke(0);
-        p.strokeWeight(4);
-      } else {
+    function drawNucleotide(x, y, type, alpha, isLastBase = false) {
+        let color = nucleotideColors[type];
+        p.fill(color[0], color[1], color[2], alpha);
+
+        if (isLastBase && type === 'A') {
+          p.stroke(0);
+          p.strokeWeight(4);
+        } else {
+          p.noStroke();
+        }
+
+        if (type === 'A' || type === 'T') {
+          p.ellipse(x, y, nucleotideSize);
+        } else {
+          p.rectMode(p.CENTER);
+          p.square(x, y, nucleotideSize);
+        }
         p.noStroke();
-      }
 
-      if (type === 'A' || type === 'T') {
-        p.ellipse(x, y, nucleotideSize);
-      } else {
-        p.rectMode(p.CENTER);
-        p.square(x, y, nucleotideSize);
+        p.fill(0);
+        p.textAlign(p.CENTER, p.CENTER);
+        p.textSize(currentTextSize * 0.9);
+        p.text(type, x, y);
       }
-      p.noStroke();
-
-      p.fill(0);
-      p.textAlign(p.CENTER, p.CENTER);
-      p.textSize(currentTextSize * 0.9);
-      p.text(type, x, y);
-    }
 
     function checkElongation() {
       if (primerSequence.length < templateSequence.length) {
@@ -148,7 +148,7 @@ let sangerSketch = (p) => {
         for (let i = nucleotides.length - 1; i >= 0; i--) {
           let nucleotide = nucleotides[i];
           if (nucleotide.type === targetBase &&
-              p.dist(nucleotide.x, nucleotide.y, targetX, targetY) < nucleotideSize * 1.4) {
+              p.dist(nucleotide.x, nucleotide.y, targetX, targetY) < nucleotideSize * elongateFactor) {
             primerSequence.push(targetBase);
             nucleotides.splice(i, 1);
             createRandomNucleotide();

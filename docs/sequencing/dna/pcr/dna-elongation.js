@@ -15,6 +15,7 @@ let dnaElongationSketch = (p) => {
     'C': [255, 209, 102],
     'G': [6, 214, 160]
   };
+  const elongateFactor = 2.5;  // How far away until we attach nucleotide
 
   let speedSlider, restartButton;
   let aspectRatio = 4/3;
@@ -24,7 +25,7 @@ let dnaElongationSketch = (p) => {
     canvas = p.createCanvas(100, 100);
     canvas.parent("dna-elongation-container");
 
-    speedSlider = p.createSlider(0.5, 3, 1, 0.1);
+    speedSlider = p.createSlider(0.5, 5, 2, 0.1);
     restartButton = p.createButton('Restart');
     restartButton.mousePressed(startAnimation);
 
@@ -141,7 +142,7 @@ let dnaElongationSketch = (p) => {
       for (let i = nucleotides.length - 1; i >= 0; i--) {
         let nucleotide = nucleotides[i];
         if (nucleotide.type === targetBase &&
-            p.dist(nucleotide.x, nucleotide.y, targetX, targetY) < nucleotideSize * 1.4) {
+            p.dist(nucleotide.x, nucleotide.y, targetX, targetY) < nucleotideSize * elongateFactor) {
           primerSequence.push(targetBase);
           nucleotides.splice(i, 1);
           createRandomNucleotide();

@@ -41,6 +41,8 @@ You can see a brief animation of this controlled synthesis idea below.
     <div id="chain-termination-container"></div>
     <script src="./chain-termination.js"></script>
 
+    [Full screen](./chain-termination.html)
+
 The key to this method is the generation of a set of DNA fragments that differ in length by single nucleotides.
 Each fragment length corresponds to the position of a specific nucleotide in the sequence.
 By determining the length of each fragment and which nucleotide it ends with, you can reconstruct the sequence of the original DNA template.

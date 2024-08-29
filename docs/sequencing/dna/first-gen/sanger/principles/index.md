@@ -102,10 +102,10 @@ The introduction of automated sequencers in the late 1980s and early 1990s marke
 These machines utilized capillary electrophoresis, a technique that replaced the large slab gels with narrow glass capillaries filled with a polymer solution.
 This shift brought several advantages:
 
-1. **Increased speed**: Capillary electrophoresis could be performed much more quickly than slab gel electrophoresis, reducing run times from hours to minutes.
-2. **Improved resolution**: The narrow capillaries allowed for better heat dissipation, enabling the use of higher voltages and resulting in sharper band separation.
-3. **Automation**: Capillary systems could be easily automated, allowing for continuous operation and higher throughput.
-4. **Real-time detection**: By incorporating laser-induced fluorescence detection, these systems could detect and record the fluorescent signal from each DNA fragment as it passed a detection window, eliminating the need for post-electrophoresis processing.
+1.  **Increased speed**: Capillary electrophoresis could be performed much more quickly than slab gel electrophoresis, reducing run times from hours to minutes.
+2.  **Improved resolution**: The narrow capillaries allowed for better heat dissipation, enabling the use of higher voltages and resulting in sharper band separation.
+3.  **Automation**: Capillary systems could be easily automated, allowing for continuous operation and higher throughput.
+4.  **Real-time detection**: By incorporating laser-induced fluorescence detection, these systems could detect and record the fluorescent signal from each DNA fragment as it passed a detection window, eliminating the need for post-electrophoresis processing.
 
 !!! quote "Figure"
     <figure markdown>

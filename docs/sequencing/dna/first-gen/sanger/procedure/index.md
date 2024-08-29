@@ -59,9 +59,9 @@ TODO:
 
 Translating these ideas into a working method required overcoming numerous technical challenges, such as:
 
-- Finding the right balance of dNTPs and ddNTPs
-- Developing efficient separation techniques
-- Creating sensitive detection methods (initially using radioactive labels, later fluorescent tags)
+-   Finding the right balance of dNTPs and ddNTPs
+-   Developing efficient separation techniques
+-   Creating sensitive detection methods (initially using radioactive labels, later fluorescent tags)
 
 The elegance of Sanger sequencing lies in how it leverages fundamental principles of DNA structure and replication to solve the complex problem of determining nucleotide sequences. This method, born from careful reasoning and innovative thinking, revolutionized molecular biology and laid the groundwork for the genomic era.
 

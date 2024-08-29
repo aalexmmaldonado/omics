@@ -55,6 +55,8 @@ This ultimately leads to several duplicated DNA available in the tube.
     <div id="dna-elongation-container" style="width: 100%; max-width: 800px; margin: 0 auto;"></div>
     <script src="./dna-elongation.js"></script>
 
+    [Full screen](./dna-elongation.html)
+
     This interactive animation demonstrates a simplified model of DNA replication, specifically the elongation phase:
 
     -   **Template Strand**: The top strand represents the 3' to 5' template DNA strand, serving as the blueprint for replication.

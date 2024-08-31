@@ -1,0 +1,3 @@
+nav:
+  - Quality control: index.md
+  - FastQC: fastqc

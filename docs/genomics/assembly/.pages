@@ -1,4 +1,5 @@
 nav:
-    - 3.1 Genome assembly: index.md
-    - 3.1.1 De novo: de-novo
-    - 3.1.2 Reference: reference
+    - Genome assembly: index.md
+    - Quality control: qc
+    - Reference: reference
+    - De novo: de-novo

@@ -1,8 +1,8 @@
 # FASTQ
 
-Results of Sanger sequencing are usually fasta files (obtained from processing chromatograms).
-Most high-throughput sequencing machines output fastq files, the “de facto” current standard in HTS.
-Like fasta, fastq files are simply text files, but where each block of information (a sequenced DNA fragment, or read) in this format is encoded as 4 lines:
+Results of sanger sequencing are usually `fasta` files obtained from processing chromatograms.
+Most high-throughput sequencing (HTS) machines output `fastq` files, the “de facto” current standard in HTS.
+Like `fasta`, `fastq` files are simply text files, but where each block of information in this format is encoded as 4 lines:
 
 ```text
 @read_identifier
@@ -27,7 +27,7 @@ NTTCCAGATATTCGATGCATGTGCCGCTCCTGTCGGAGATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTGAT
 ## Q is for Quality
 
 Each base has a quality character associated with it, representing how confidently the machine identified (called) the base.
-The probability of error per base is given as a Phred score, calculated from an integer value ($Q$) derived from the quality character associated to the base.
+The probability of error per base is given as a Phred score, $Q$, calculated from an integer value derived from the quality character associated to the base.
 This error probability, $P$ is computed with
 
 $$
@@ -40,12 +40,14 @@ Useful reference values of Q include:
 -   $Q = 20$ represents 99% accuracy (0.01 error)
 -   $Q = 30$ represents 99.9% accuracy (0.001 error)
 -   $Q = 40$ represents 99.99% accuracy (0.0001 error)
+-   $Q = 50$ represents 99.999% accuracy (0.00001 error)
 
 Although there’s theoretically no limit, $Q$ usually goes up to around 40 in recent illumina machines.
 
 ### ASCII table
 
-To obtain this $Q$ value from the character associated to the quality of the base, we have to know that each character (such as `‘#’`) has an ASCII decimal value associated (for example, `‘#’` has a value of 35).
+To obtain this $Q$ value from the character associated to the quality of the base, we have to know that each character (such as `#`) has an ASCII decimal value associated.
+For example, `#` has a value of 35.
 
 ```text
 Dec  Char                           Dec  Char     Dec  Char     Dec  Char
@@ -85,7 +87,7 @@ Dec  Char                           Dec  Char     Dec  Char     Dec  Char
 ```
 
 The $Q$ value of a character is the decimal value corresponding to the entry of that character in the ASCII table, subtracted by 33.
-For example $Q$(‘#’) = 35 – 33.
+For example $Q$(`#`) = 35 – 33 = 2.
 
 !!! important "Why do we subtract by 33?"
 
@@ -108,34 +110,20 @@ NTTCCAGATATTCGATGCATGTGCCGCTCCTGTCGGAGATCGGAAGAGCACACGTCTGAACTCCAGTCACCGTGAT
 #8BCCGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGEGGGGFGGGGGGGGGGGGGGGGGGGGGGGGGG
 ```
 
-we can see it starts with ‘N’ (unknown), with an associated quality character ‘#’.
+we can see it starts with `N` (unknown), with an associated quality character `#`.
 To know how confident the machine was in reading that base, we calculate:
 
--   $Q$ = 35 (ASCII decimal value of ‘#’) - 33 (ASCII decimal value of ‘!’) = 2
--   $P$ = 10^(-2/10) = 63% (probability of error)
+-   $Q$ = 35 (ASCII decimal value of `#`) - 33 (ASCII decimal value of `!`) = 2
+-   $P = 10^{-2/10}$ = 0.631 (63.1% probability of error)
 
-Given this probability of error, it is not surprising that the machine could not confidently say which base was in that position and therefore placed an ‘N’ in that position.
+Given this probability of error, it is not surprising that the machine could not confidently say which base was in that position and therefore placed an `N` in that position.
 It is fairly common that in the first bases the machine is still calibrating, and sometimes there is less confidence in the called base.
 
 Many sequencing machines can read both ends of a fragment.
-In this case, the machine will generate two paired fastq files, one with the forward reads and another with the reverse reads.
-You can find an example of this is the example fastq files paired_end_example_1 (containing the forward reads) and paired_end_example_2 (containing the reverse reads).
+In this case, the machine will generate two paired `fastq` files, one with the forward reads and another with the reverse reads.
+You can find an example of this is the example fastq files `paired_end_example_1` (containing the forward reads) and `paired_end_example_2` (containing the reverse reads).
 These fastq are paired because the reads for the same fragment are in the same order in the two files.
 For example, the first read in the forward fastq corresponds to the forward reading of the same fragment as the first read in the reverse fastq.
-
-## Quality check
-
-High Throughput Sequencing machines read thousands or millions of sequences in parallel. As you can imagine, this usually generates large fastq files, with millions of lines. Manually inspecting the quality of each read is out of the question. Specialized software has been developed to provide quality measures for fastq files generated by HTS machines. FastQC is a popular program to generate quality reports on fastq data. In fact, this is usually the first thing you should do once you receive a new dataset. FastQC reports provide a series of plots that allow the user to assess the overall quality of their raw data and detect potential biases and problems.
-
-Some plots indicate distribution of base qualities along the length of reads. At least for illumina data, on average the quality of each base tends to decrease along the length of the read.
-
-Other plots indicate biases in nucleotidic content of reads, either globally (such as %GC plots), or positionally. Global bias in nucleotidic content can be useful to search for signs of contaminants. On the other hand, positional bias are useful to detect presence of artefactual sequences in your reads such as adaptors. Another insight you may obtain from this information are potential biases in the preparation of your library. For example, random hexamer priming is actually not truly random and preferentially selects certain sequences. The currently popular transposase-based enzymatic protocol, although reasonably random, is also not completely random, and you can see this through positional bias, particularly in the beginning of reads. The presence of adaptors is a relatively common event, and therefore specific plots exist to detect the presence of the most commonly used adaptors. Finally, the presence of repetitive sequences can also suggest contaminants, PCR artifacts, or other types of bias.
-
-## Filtering and trimming
-
-As you may have noticed before, reads tend to lose quality towards their end, where there is a higher probability of erroneous bases being called. To avoid problems in subsequent analysis, you should remove bases with higher probability of error, usually by trimming poor quality bases from the end.
-
-Most software for the analysis of HTS data is freely available to users. Nonetheless, they often require the use of the command line in a Unix-like environment (seqtk is one such case). User-friendly desktop software such as CLC or Ugene is available, but given the quick pace of development in this area, they are constantly outdated. Moreover, even with better algorithms, HTS analysis must often be run in external servers due to the heavy computational requirements. One popular tool is Galaxy, which allows even non-expert users to execute many different HTS analysis programs through a simple web interface.
 
 ## Acknowledgements
 

@@ -1,5 +1,6 @@
 nav:
     - Genome assembly: index.md
     - Quality control: qc
+    - Concepts: concepts
     - Reference: reference
     - De novo: de-novo

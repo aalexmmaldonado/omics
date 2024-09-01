@@ -1,0 +1,6 @@
+nav:
+    - Concepts: index.md
+    - Contigs: contigs
+    - Shortest common superstring: scs
+    - Coverage: coverage
+    - Unresolved repeats: unresolved

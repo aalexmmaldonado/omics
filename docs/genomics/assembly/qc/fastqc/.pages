@@ -1,3 +1,9 @@
 nav:
     - FastQC: index.md
-    - Analysis: analysis.md
+    - Adapter content: adapter.md
+    - Per base sequence content: base-content.md
+    - Per base N content: base-n.md
+    - Per base sequence quality: base-quality.md
+    - Sequence duplication levels: duplication.md
+    - Per sequence GC content: gc.md
+    - ...

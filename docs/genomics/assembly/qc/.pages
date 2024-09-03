@@ -1,3 +1,4 @@
 nav:
   - Quality control: index.md
   - FastQC: fastqc
+  - fastp: fastp

@@ -90,9 +90,6 @@ extra:
     provider: plausible
     domain: omics.crumblearn.org
   social:
-    - icon: fontawesome/brands/gitlab
-      link: https://github.com/oasci
-      name: OASCI on GitLab
     - icon: fontawesome/brands/github
       link: https://github.com/oasci
       name: OASCI on GitHub

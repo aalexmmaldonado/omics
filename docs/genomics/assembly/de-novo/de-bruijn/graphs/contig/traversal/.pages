@@ -1,2 +1,6 @@
 nav:
   - Graph traversal: index.md
+  - greedy
+  - dfs
+  - bfs
+  - max-flow

@@ -1,0 +1,8 @@
+nav:
+  - Graphs: index.md
+  - concepts
+  - construction
+  - errors
+  - repeats
+  - simplify
+  - contig

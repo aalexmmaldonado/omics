@@ -1,0 +1,9 @@
+nav:
+  - SPAdes: index.md
+  - pipeline
+  - multisized
+  - error
+  - construction
+  - paired
+  - contig
+  - scaffold

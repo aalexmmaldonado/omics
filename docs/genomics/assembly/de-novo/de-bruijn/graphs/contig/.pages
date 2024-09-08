@@ -1,0 +1,6 @@
+nav:
+  - Contig extraction: index.md
+  - Simple paths: paths
+  - Ambiguities: ambiguities
+  - Graph traversal: traversal
+  - Quality assessment: quality

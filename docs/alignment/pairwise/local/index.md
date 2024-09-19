@@ -27,20 +27,45 @@ This grid has one sequence listed across the top and the other down the side.
 The first step is to fill in the top row and the leftmost column with zeros.
 This is because we need a starting point for our calculations, and beginning with zeros allows us to build up scores from nothing, which makes sense for finding local alignments where the alignment could start anywhere within the sequences.
 
-### Matrix Filling
+### Matrix filling
 
-The matrix filling is the core of the Smith-Waterman algorithm, where each cell $(i, j)$ is calculated based on the possibility of a match/mismatch at that position or the introduction of a gap in either sequence.
+The matrix filling step is the core of the Smith-Waterman algorithm for local sequence alignment.
+Let's break it down, keeping the mathematical notation but explaining each part in detail.
+
+For each cell $(i,j)$ in our matrix $H$, we calculate the score using this formula:
 
 $$
-H(i, j) = \max \left\{ \begin{array}{l} 0, \\ H(i-1, j-1) + s(x_i, y_j), \\ \max_{k\geq1}\{H(i-k, j) - W_k\}, \\ \max_{l\geq1}\{H(i, j-l) - W_l\} \end{array} \right.
+H(i,j) = \max \left\{ \begin{array}{l}
+0, \\
+H(i-1,j-1) + s(x_i, y_j), \\
+\max_{k\geq1}\{H(i-k,j) - W_k\}, \\
+\max_{l\geq1}\{H(i,j-l) - W_l\}
+\end{array} \right.
 $$
 
-Where:
+Let's break this down step by step:
 
--   $H(i, j)$ is the score at position $(i, j)$ of the matrix.
--   $s(x_i, y_j)$ is the score for aligning characters $x_i$ and $y_j$, which could be a positive value for a match or a negative value for a mismatch.
--   $W_k$ and $W_l$ are the gap penalties for opening a gap of length $k$ or $l$ in one of the sequences.
--   The first term inside the max function ensures that scores do not go negative, allowing the algorithm to reset at points of low similarity, thereby focusing on local alignments.
+1.  **$H(i,j)$**: This is the score we're calculating for the cell at position $(i,j)$ in our matrix.
+2.  **$\max\{\}$**: We're taking the maximum value of four options. This means we'll choose the highest scoring option among them.
+3.  **Option 1: $0$**
+    -   This allows us to start a new alignment if all other options result in a negative score.
+    -   It's crucial for finding local alignments, as it lets us "reset" when similarity decreases.
+4.  **Option 2: $H(i-1,j-1) + s(x_i, y_j)$**
+    -   This represents a match or mismatch between characters $x_i$ and $y_j$.
+    -   $H(i-1,j-1)$ is the score from the diagonal upper-left cell.
+    -   $s(x_i, y_j)$ is the scoring function:
+        -   It returns a positive value (e.g., +2) if $x_i$ and $y_j$ match.
+        -   It returns a negative value (e.g., -1) if they mismatch.
+5.  **Option 3: $\max_{k\geq1}\{H(i-k,j) - W_k\}$**
+    -   This represents introducing a gap in the sequence on the top of the matrix.
+    -   We're looking at cells directly above our current position.
+    -   $k$ is the gap length.
+        This only comes into play when we have affine gap penalties where the score changes based on opening or extending a gap.
+        We would have to try all possible values of $k$ to see which would maximize the score.
+    -   $W_k$ is the penalty for a gap of length $k$.
+6.  **Option 4: $\max_{l\geq1}\{H(i,j-l) - W_l\}$**
+    -   This is similar to Option 3, but for introducing a gap in the sequence on the left side of the matrix.
+    -   We're looking at cells directly to the left of our current position.
 
 In other words:
 
@@ -49,7 +74,95 @@ In other words:
 -   We also consider skipping a letter in one of the sequences. This could happen if there's a gap in one sequence compared to the other. We take a small penalty for this, subtracting a little from our score.
 -   The key here is we always pick the option that gives us the highest score, which could even be zero. We never let the score go negative because we're only interested in positive matches.
 
-### Traceback
+The case where $k > 1$ (considering gaps longer than one in a single step) comes into play primarily when using affine gap penalties.
+However, it's crucial to understand that this is not typically how the basic Smith-Waterman algorithm is implemented.
+
+In the standard implementation with linear gap penalties:
+
+-   $k$ is always 1
+-   We only look at the immediately adjacent cell $(i-1, j)$
+-   The formula simplifies to $H(i-1, j) - W$, where $W$ is a fixed gap penalty
+
+Affine gap penalties were introduced to more accurately model the biological reality of insertions and deletions.
+They use two different penalties:
+
+1.  Gap opening penalty ($o$): A larger penalty for starting a new gap
+2.  Gap extension penalty ($e$): A smaller penalty for extending an existing gap
+
+The penalty for a gap of length $k$ would be: $W_k = o + (k-1)e$
+
+In this model, considering $k > 1$ during the matrix filling step could theoretically lead to optimal alignments in certain scenarios.
+However, implementing this naively would be computationally expensive.
+
+In practice, algorithms that use affine gap penalties (like Gotoh's algorithm, an extension of Smith-Waterman) don't actually consider all possible $k$ values at each step.
+Instead, they use additional matrices to keep track of the best score ending with a gap in each sequence.
+This allows them to efficiently handle affine gap penalties without explicitly calculating $\max_{k\geq1}\{H(i-k,j) - W_k\}$ at each step.
+
+Considering $k > 1$ might be optimal in scenarios where:
+
+1.  The gap opening penalty is significantly larger than the gap extension penalty.
+2.  There's a long stretch of mismatches between the sequences.
+
+In such cases, it might be more favorable to open one long gap rather than several short ones.
+However, this is captured by the efficient implementation mentioned above without explicitly considering all k values.
+
+Consider aligning these sequences with affine gap penalties:
+
+-   Sequence 1: ACGTACGT
+-   Sequence 2: ACGCGT
+
+With penalties:
+
+-   Match: +2
+-   Mismatch: -1
+-   Gap opening (o): -4
+-   Gap extension (e): -1
+
+An optimal alignment might be:
+
+```text
+ACGTACGT
+ACG--CGT
+```
+
+This alignment has one gap of length 2, which scores better than two separate gaps:
+
+-   One gap of length 2: -4 (opening) + -1 (extension) = -5
+-   Two gaps of length 1: -4 (opening) + -4 (opening) = -8
+
+#### Practical Implementation
+
+In practice, especially for a basic implementation with linear gap penalties, you can simplify this to:
+
+$$
+H(i,j) = \max \left\{ \begin{array}{l}
+0, \\
+H(i-1,j-1) + s(x_i, y_j), \\
+H(i-1,j) - W, \\
+H(i,j-1) - W
+\end{array} \right.
+$$
+
+Where $W$ is your fixed gap penalty.
+
+#### Example Calculation
+
+Let's say we're aligning `ACTG` with `ACG` using these scores:
+
+-   Match: +2
+-   Mismatch: -1
+-   Gap: -2
+
+For the cell comparing `T` from `ACTG` and `C` from `ACG`:
+
+1.  $0$ (start new)
+2.  $H(i-1,j-1) + s('T','C') = 4 + (-1) = 3$ (mismatch)
+3.  $H(i-1,j) - W = 2 - 2 = 0$ (gap in `ACTG`)
+4.  $H(i,j-1) - W = 2 - 2 = 0$ (gap in `ACG`)
+
+The maximum of these is 3, so $H(i,j) = 3$.
+
+#### Traceback
 
 The traceback step finds the optimal local alignment by starting from the highest-scoring cell in the matrix and tracing back through the cells used to calculate its score until a cell with a score of 0 is reached.
 
@@ -86,9 +199,9 @@ Fill the matrix based on the scoring rules. For simplicity, let's calculate a fe
 
 The filled matrix might look like this:
 
-|     | - | A | C | T | G |
+|  H   | | A | C | T | G |
 |-----|---|---|---|---|---|
-| **-** | 0 | 0 | 0 | 0 | 0 |
+| | 0 | 0 | 0 | 0 | 0 |
 | **A** | 0 | 2 | 0 | 0 | 0 |
 | **C** | 0 | 0 | 4 | 2 | 0 |
 | **T** | 0 | 0 | 2 | 3 | 1 |
